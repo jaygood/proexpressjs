@@ -1,0 +1,21 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "description": "proexpressjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Error: no test specified' && exit 1"
+  },
+  "dependencies": {},
+  "repository": "https://github.com/storify/sfy-gallery",
+  "author": "Azat Mardan",
+  "license": "BSD",
+  "devDependencies": {
+    "consolidate": "0.10.0",
+    "express": "4.8.1",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.1.0",
+    "handlebars": "2.0.0-beta.1",
+    "superagent": "0.18.2"
+  }
+}
