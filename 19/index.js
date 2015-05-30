@@ -22,8 +22,6 @@ app.get('/', (req, res) => {
     .query({api_key, username, _token})
     .set({Accept: 'application/json'})
     .end((e, storifyResponse) => {
-      console.log('e', e, '\n--------------------------------------------------\n');
-      console.log('storify', storifyResponse.body.content, '\n--------------------------------------------------\n');
       if (e) return next(e);
       return res.render('index', storifyResponse.body.content);
     });
