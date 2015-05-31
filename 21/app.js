@@ -4,12 +4,13 @@ const bodyParser = require('body-parser')
 const logger = require('logger')
 
 const app = express()
-const db = mongoskin.db('@localhost:27017/test', {safe: true})
 
 app.set('port', process.env.port || 3000)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
+
+const db = mongoskin.db('mongodb://@localhost:27017/test', {safe: true})
 
 app.param('collectionName', (req, res, next, collectionName) => {
   req.collection = db.collection(collectionName)
