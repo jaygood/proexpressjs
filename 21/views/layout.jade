@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title= title + ' | ' + appname
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/main.css')
+  body
+    .container
+      .navbar.navbar-default
+        .container
+          .navbar-header
+            a.navbar-brand(href='/')= appname
+        .alert.alert-dismissable
+      h1=title
+      p Welcome to Express.js
+      a(href='http://twitter.com/azat_co')@azat_co
+      block content
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+  script(src='/js/main.js')
