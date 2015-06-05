@@ -76,7 +76,7 @@ const db = function(req, res, next) {
   return next();
 };
 
-const {auth, users, main: {checkUser, checkAdmin, checkApplicant}} = routes;
+const {application, posts, auth, users, main: {checkUser, checkAdmin, checkApplicant}} = routes;
 
 app.get('/auth/angellist', auth.angelList);
 app.get('/auth/angellist/callback',
@@ -87,6 +87,27 @@ app.get('/api/profile', checkUser, db, main.profile);
 app.delete('/api/profile', checkUser, db, main.delProfile);
 app.post('/api/login', db, main.login);
 app.post('/api/logout', db, main.logout);
+
+app.get('/api/posts', checkUser, db, posts.getPosts);
+app.post('/api/posts', checkUser, db, posts.add);
+app.get('/api/posts/:id', checkUser, db, posts.getPost);
+app.put('/api/posts/:id', checkUser, db, posts.updatePost);
+app.delete('/api/posts/:id', checkUser, db, posts.del);
+
+app.get('/api/users', checkUser, db, users.getUsers);
+app.get('/api/users/:id', checkUser, db, users.getUser);
+app.post('/api/users', checkAdmin, db, users.add);
+app.put('/api/users/:id', checkAdmin, db, users.update);
+app.delete('/api/users/:id', checkAdmin, db, users.del);
+
+app.post('/api/application', checkAdmin, db, application.add);
+app.put('/api/application', checkApplicant, db, application.update);
+app.get('/api/application', checkApplicant, db, application.get);
+
+app.get('*', (req, res) => {
+  res.status(404).send();
+})
+
 
 
 
