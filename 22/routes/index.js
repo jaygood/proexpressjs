@@ -1,3 +1,7 @@
-exports.index = (req, res) => {
-  res.render('index', {title: 'Home'})
+module.exports = {
+  posts: require('./posts'),
+  main: require('./main'),
+  users: require('./users'),
+  application: require('./application'),
+  auth: require('./auth')
 };

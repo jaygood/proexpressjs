@@ -106,7 +106,23 @@ app.get('/api/application', checkApplicant, db, application.get);
 
 app.get('*', (req, res) => {
   res.status(404).send();
-})
+});
+
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
+
+http.createServer(app);
+if (require.main === module) {
+  app.listen(app.get('port'), () =>
+    console.info(`${c.blue}Express server listening to port ${app.get('port')}${c.reset}`)
+  );
+} else {
+  console.info(`${c.blue}Running app as module${c.reset}`);
+  exports.app = app;
+}
+
+
 
 
 
